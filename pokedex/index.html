@@ -18,39 +18,51 @@
 
     <h1 class="header__title">Pokemon API</h1>
 
-    <nav class="header__nav-bar">
-      <ul class="header__list">
+    <figure class="header__menu-icon icon" id="menu-icon">
+      <img class="header__img" src="/img/icons/menu.png" alt="pokeball">
+		</figure>
 
-        <li class="header__item list-item list-item--active">
+    <nav class="header__nav-bar menu" id="menu">
+
+      <h2 class="menu__title" >Menu</h2>
+      
+      <figure class="menu__close-icon icon" id="menu-close">
+        <img class="menu__img" src="/img/icons/close.png" alt="close menu">
+      </figure>
+
+      <ul class="menu__list">
+        
+        <li class="menu__item list-item list-item--active">
           <a class="list-item__link" href="#">Pokedex</a>
         </li>
-
-        <li class="header__item list-item">
-					<a class="list-item__link" href="#">Abilities</a>
-				</li>
-
-        <li class="header__item list-item">
-					<a class="list-item__link" href="#">Items</a>
-				</li>
-
+        
+        <li class="menu__item list-item">
+          <a class="list-item__link" href="#">Abilities</a>
+        </li>
+        
+        <li class="menu__item list-item">
+          <a class="list-item__link" href="#">Items</a>
+        </li>
+          
       </ul>
-    </nav>
 
-    <figure class="header__menu-icon icon">
-			<img class="header__img" src="/img/icons/menu.png" alt="pokeball">
-		</figure>
+      <section class="menu__credits">
+        <p>Build by: <a class="link" href="https://github.com/monoald" target="_blank">Carlos S. Aldazosa</a></p>
+        <a class="link" href="https://github.com/monoald/pokedex" target="_blank">Repository</a>
+      </section>
+    </nav>
 
   </header>
 
   <main class="main">
     
-    <div class="main__filter main__filter--active" id="filter-icon">
-      <figure class="main__icon icon">
+    <div class="main__filter" >
+      <figure class="main__icon icon" id="filter-icon">
         <img class="main__img" src="/img/icons/filter.png" alt="filter">
       </figure>
     </div>
     
-    <nav class="main__regions">
+    <nav class="main__regions" id="regions">
       <ul class="region">
 
         <li class="region__item region__item--active">
@@ -108,24 +120,71 @@
     </nav>
 
     <section class="filter" id="filter-section">
-      <div class="filter__to-apply">
-        <p class="type__button">Grass</p>
+
+      <div class="filter__back">
+        <figure class="filter__icon icon" id="back-icon">
+          <img class="filter__img" src="/img/icons/back.png" alt="return">
+        </figure>
       </div>
 
-      <div class="filter__types">
-        <h2 class="types__title">Type</h2>
-        <p class="type__button">Grass</p>
-        <p class="type__button">Fire</p>
-        <p class="type__button">Water</p>
+      <div class="filter__to-apply">
+        <!-- <p class="type">Grass</p> -->
+      </div>
+
+      <div class="filter__types" id="type-container">
+        <h2 class="filter__title">Type</h2>
+        <!-- <p class="type">Grass</p>
+        <p class="type">Fire</p>
+        <p class="type">Water</p> -->
       </div>
     </section>
 
     <section class="main__cards">
-      
+
+      <div class="card">
+        <figure class="card__image">
+          <img class="card__img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="">
+        </figure>
+
+        <span class="card__number"># 1</span>
+
+        <h3 class="card__name">Bulbasaur</h3>
+      </div>
+
+      <div class="card">
+        <figure class="card__image">
+          <img class="card__img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="">
+        </figure>
+
+        <span class="card__number"># 1</span>
+
+        <h3 class="card__name">Bulbasaur</h3>
+      </div>
+
+      <div class="card">
+        <figure class="card__image">
+          <img class="card__img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="">
+        </figure>
+
+        <span class="card__number"># 1</span>
+
+        <h3 class="card__name">Bulbasaur</h3>
+      </div>
+
+      <div class="card">
+        <figure class="card__image">
+          <img class="card__img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="">
+        </figure>
+
+        <span class="card__number"># 1</span>
+
+        <h3 class="card__name">Bulbasaur</h3>
+      </div>
+
     </section>
 
   </main>
 
-  <script src="./js/index.js"></script>
+  <script type="module" src="./js/index.js"></script>
 </body>
 </html>
