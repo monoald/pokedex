@@ -1,0 +1,209 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+	/* background-image: url("/img/images/background.jpeg"); */
+}
+
+:root {
+	--color-cultured: #F5F4F5;
+	--color-silver-metallic: #ADABB1;
+	--color-jet-transparent: rgba(56, 56, 66, 0.3);
+	--color-raisin-black: #302D31;
+	--color-xiketic: #060607;
+	--size-sm: 1.2rem;
+	--size-md: 1.8rem;
+	--size-ln: 2.2rem
+	--color-raisin: #27262C;
+	--color-rais: #312F37;
+	--color-light-gray: #D4D3D9;
+	--color-dark-silver: #44424D;
+	--color-ra: #1D1C21;
+	--color-manatee: #9F9CAB;
+}
+
+/*------------------------------------------------HEADER---------------------------------*/
+.header {
+  width: 100%;
+  height: 44px;
+  background-color: var(--color-ra);
+	/* background-color: var(--color-jet-transparent); */
+	color: var(--color-silver-metallic);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 14px;
+	position: relative;
+}
+.header__logo {
+	width: 18px;
+	height: 18px;
+}
+.header__img {
+	width: 100%;
+	object-fit: cover;
+}
+.header__title {
+	display: none;
+}
+.header__nav-bar {
+	width: auto;
+}
+.header__list {
+	list-style: none;
+}
+.list-item {
+	display: none;
+	font-size: var(--size-md);
+}
+.list-item--active {
+	display: block;
+}
+.list-item__link {
+	text-decoration: none;
+	color: var(--color-silver-metallic);
+}
+.list-item--active .list-item__link {
+	color: var(--color-cultured);
+}
+.header__menu-icon {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	right: 18px;
+}
+.icon {
+	transition: all .3s cubic-bezier(0,0,.4,5);
+	cursor: pointer;
+}
+.icon:hover {
+	transform: scale3d(1.07,1.07,1.07);
+}
+
+/*-----------------------------------------------MAIN-------------------------------------------*/
+
+.main {
+	background-color: var(--color-rais);
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/*----------------------------------------REGIONS NAV-BAR----------------------------------*/
+.main__regions {
+	display: block;
+	width: 88%;
+	max-width: 88vw;
+	height: 62px;
+	max-height: 69px;
+}
+.main__regions--inactive {
+	display: none;
+}
+.region {
+	width: 100%;
+	height: 100%;
+	list-style: none;
+	display: flex;
+	gap: 20px;
+	font-size: var(--size-md);
+	color: var(--color-manatee);
+	align-items: center;
+	overflow: auto;
+	padding: 0 14px;
+}
+.region__item {
+	display: flex;
+	padding: 2px 2px;
+	border-bottom: 1px solid var(--color-manatee);
+	border-top: 1px solid var(--color-manatee);
+	width: 100%;
+	white-space: pre;
+	cursor: pointer;
+}
+.region__item:hover {
+	color: var(--color-light-gray);
+	border-top: 1px solid var(--color-light-gray);
+	border-bottom: 1px solid var(--color-light-gray);
+}
+.region__item--active {
+	color: var(--color-light-gray);
+	border-top: 1px solid var(--color-light-gray);
+	border-bottom: 1px solid var(--color-light-gray);
+}
+
+/*--------------------------------------------FILTER--------------------------------------*/
+
+.main__filter {
+	width: 12%;
+	max-height: 68px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.main__filter--active {
+	/* background-color: var(--color-ra); */
+	background-color: var(--color-dark-silver);
+}
+.main__icon {
+	width: 26px;
+	height: 26px;
+}
+.main__img {
+	width: 100%;
+	object-fit: cover;
+}
+
+.filter {
+	display: none;
+}
+
+.filter--active {
+	display: block;
+	width: 100%;
+	height: auto;
+	color: var(--color-cultured);
+	background-color: var(--color-dark-silver);
+}
+.filter__to-apply {
+	/* width: 100%; */
+	display: flex;
+	flex-wrap: wrap;
+	height: auto;
+	padding: 14px;
+	border-bottom: 1px solid #6B6779;
+}
+.filter__types {
+	width: 100%;
+	height: auto;
+	padding: 14px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+.types__title {
+	width: 100%;
+	font-size: var(--size-md);
+}
+.type__button {
+	font-size: var(--size-sm);
+	padding: 4px 6px;
+	border-radius: 10px;
+	background-color: aqua;
+	color: var(--color-ra);
+}
+
+
+.main__cards {
+	width: 100%;
+	height: 55px;
+}

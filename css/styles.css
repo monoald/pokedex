@@ -11,7 +11,8 @@ html {
 
 :root {
     --pear: #DCED31;
-    --blue-transparent: rgba(45, 93, 139, 0.8);
+    --blue-transparent: rgba(45, 93, 139, 0.4);
+    --dark-blue-transparent: rgba(45, 93, 139, 0.8);
 }
 .main {
     width: 100%;
@@ -72,5 +73,5 @@ html {
     border-radius: 20px;
 }
 .next-page:hover {
-    background-color: var(--blue-transparent);
+    background-color: var(--dark-blue-transparent);
 }

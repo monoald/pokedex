@@ -1,14 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/img/icons/pokeball.png">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <title>Pokedex</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/img/icons/pokeball.png">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>Pokedex</title>
+  <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-    <h1>Welcome!</h1>
+  <header class="header">
+
+		<figure class="header__logo">
+			<img class="header__img" src="/img/icons/pokeball.png" alt="pokeball">
+		</figure>
+
+    <h1 class="header__title">Pokemon API</h1>
+
+    <nav class="header__nav-bar">
+      <ul class="header__list">
+
+        <li class="header__item list-item list-item--active">
+          <a class="list-item__link" href="#">Pokedex</a>
+        </li>
+
+        <li class="header__item list-item">
+					<a class="list-item__link" href="#">Abilities</a>
+				</li>
+
+        <li class="header__item list-item">
+					<a class="list-item__link" href="#">Items</a>
+				</li>
+
+      </ul>
+    </nav>
+
+    <figure class="header__menu-icon icon">
+			<img class="header__img" src="/img/icons/menu.png" alt="pokeball">
+		</figure>
+
+  </header>
+
+  <main class="main">
+    
+    <div class="main__filter main__filter--active" id="filter-icon">
+      <figure class="main__icon icon">
+        <img class="main__img" src="/img/icons/filter.png" alt="filter">
+      </figure>
+    </div>
+    
+    <nav class="main__regions">
+      <ul class="region">
+
+        <li class="region__item region__item--active">
+          <p ">National</p>
+        </li>
+
+        <li class="region__item">
+          <p>Kanto</p>
+        </li>
+
+        <li class="region__item">
+          <p>Johto</p>
+        </li>
+
+        <li class="region__item">
+          <p>Hoenn</p>
+        </li>
+
+        <li class="region__item">
+          <p>Sinnoh</p>
+        </li>
+
+        <li class="region__item">
+          <p>Unova</p>
+        </li>
+
+        <li class="region__item">
+          <p>Conquest-Gallery</p>
+        </li>
+
+        <li class="region__item">
+          <p>Kalos</p>
+        </li>
+
+        <li class="region__item">
+          <p>Alola</p>
+        </li>
+
+        <li class="region__item">
+          <p>Melemele</p>
+        </li>
+
+        <li class="region__item">
+          <p>Akala</p>
+        </li>
+
+        <li class="region__item">
+          <p>Ulaula</p>
+        </li>
+
+        <li class="region__item">
+          <p>Poni</p>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="filter" id="filter-section">
+      <div class="filter__to-apply">
+        <p class="type__button">Grass</p>
+      </div>
+
+      <div class="filter__types">
+        <h2 class="types__title">Type</h2>
+        <p class="type__button">Grass</p>
+        <p class="type__button">Fire</p>
+        <p class="type__button">Water</p>
+      </div>
+    </section>
+
+    <section class="main__cards">
+      
+    </section>
+
+  </main>
+
+  <script src="./js/index.js"></script>
 </body>
 </html>
