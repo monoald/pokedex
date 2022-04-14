@@ -46,6 +46,12 @@ html {
 	--color-type-unknown: transparent;
 	--color-type-shadow: #1F1627;
 }
+/*------------------------------------------------IMAGES--------------------------------------*/
+
+.image {
+	width: 100%;
+	object-fit: cover;
+}
 
 /*------------------------------------------------HEADER---------------------------------*/
 .header {
@@ -63,11 +69,6 @@ html {
 	width: 18px;
 	height: 18px;
 }
-.header__img {
-	width: 100%;
-	object-fit: cover;
-}
-
 .header__menu-icon {
 	display: block;
 	width: 24px;
@@ -104,10 +105,6 @@ html {
 	top: 8px;
 	right: 8px;
 }
-.menu__img {
-	width: 100%;
-	object-fit: cover;
-}
 .menu__title {
 	height: 44px;
 	margin: 0 20px;
@@ -127,9 +124,6 @@ html {
 .list-item {
 	font-size: var(--size-sm);
 }
-/* .list-item--active {
-	color: var;
-} */
 .list-item__link {
 	text-decoration: none;
 	color: var(--color-manatee);
@@ -172,7 +166,7 @@ html {
 	flex-wrap: wrap;
 }
 
-/*----------------------------------------REGIONS NAV-BAR----------------------------------*/
+/*----------------REGIONS NAV-BAR----------------*/
 .main__regions {
 	display: block;
 	width: 88%;
@@ -215,7 +209,7 @@ html {
 	border-bottom: 1px solid var(--color-light-gray);
 }
 
-/*--------------------------------------------FILTER--------------------------------------*/
+/*---------------------FILTER------------------------*/
 
 .main__filter {
 	display: block;
@@ -231,10 +225,6 @@ html {
 }
 .main__icon--inactive {
 	display: none;
-}
-.main__img {
-	width: 100%;
-	object-fit: cover;
 }
 
 .filter {
@@ -264,11 +254,6 @@ html {
 	margin-top: auto;
 	margin-bottom: auto;
 }
-.filter__img {
-	width: 100%;
-	object-fit: cover;
-}
-
 .filter__to-apply {
 	width: 100%;
 	display: flex;
@@ -276,7 +261,6 @@ html {
 	height: auto;
 	padding: 0 14px 14px;
 	border-bottom: 1px solid #6B6779;
-
 }
 .filter__types {
 	width: 100%;
@@ -298,7 +282,7 @@ html {
 	color: var(--color-ra);
 }
 
-/*-------TYPES MODIFIERS-------*/
+/*-------------------TYPES MODIFIERS----------------*/
 
 .type--normal {
 	background-color: var(--color-type-normal);
@@ -366,7 +350,7 @@ html {
 }
 
 
-/*------------------------------------------------------------CARDS--------------------------------------*/
+/*-----------------------CARDS-----------------------*/
 .main__cards {
 	width: 100%;
 	height: auto;
@@ -380,18 +364,33 @@ html {
 }
 .card {
 	width: 240px;
-	height: 300px;
-	box-shadow: 0 28px 58px rgb(0 0 0 / 44%);
+	height: 332px;
+	box-shadow: 0 18px 28px rgb(0 0 0 / 64%);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	text-align: center;
+	gap: 14px;
+	color: var(--color-cultured);
+	font-size: var(--size-sm);
 }
 .card__image {
 	width: 80%;
 	height: auto;
 }
-.card__img {
-	width: 100%;
-	object-fit: cover;
+.card__description {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+.card__name::first-letter {
+	text-transform: capitalize;
+}
+.card__types .type {
+	display: inline-block;
+	width: 68px;
+}
+.card__types .type::first-letter {
+	text-transform: capitalize;
 }

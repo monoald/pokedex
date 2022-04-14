@@ -2,7 +2,7 @@
 //  Create a type for the filter
 
 const makeType = (type) => {
-    const newType = document.createElement('p');
+    const newType = document.createElement('span');
 
     newType.innerHTML = type;
 
