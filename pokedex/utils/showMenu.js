@@ -4,7 +4,7 @@
 const menu = document.getElementById('menu');
 
 const showMenu = () => {
-    menu.setAttribute('class', 'header__nav-bar--active');
+    menu.setAttribute('class', 'menu__container--active');
 }
 
 //  Export function

@@ -63,7 +63,6 @@ html {
 	justify-content: center;
 	align-items: center;
 	gap: 14px;
-	/* position: relative; */
 }
 .header__logo {
 	width: 18px;
@@ -79,18 +78,22 @@ html {
 .header__menu-icon--inactive {
 	display: none;
 }
-.header__nav-bar {
+.menu {
+	width: 100%;
+	position: sticky;
+	top: 44px;
+	color: var(--color-cultured);
+}
+.menu__container {
 	width: auto;
 	display: none;
-	position: relative;
 }
-.header__nav-bar--active {
-	display: block;
+.menu__container--active {
 	width: 60%;
 	height: 100vh;
 	background-color: var(--color-ra);
 	position: absolute;
-	top: 0;
+	top: -44px;
 	right: 0;
 }
 

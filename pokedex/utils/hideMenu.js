@@ -4,7 +4,7 @@
 const menu = document.getElementById('menu');
 
 const hideMenu = () => {
-    menu.setAttribute('class', 'header__nav-bar');
+    menu.setAttribute('class', 'menu__container');
 }
 
 //  Export function
