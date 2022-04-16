@@ -241,6 +241,7 @@ html {
 	height: auto;
 	color: var(--color-cultured);
 	background-color: var(--color-dark-silver);
+	box-shadow: 0 12px 12px rgb(0 0 0 / 24%);
 }
 .filter__back {
 	width: 100%;
@@ -261,6 +262,7 @@ html {
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
+	gap: 16px;
 	height: auto;
 	padding: 0 14px 14px;
 	border-bottom: 1px solid #6B6779;
@@ -268,21 +270,43 @@ html {
 .filter__types {
 	width: 100%;
 	height: auto;
-	padding: 14px;
+	padding: 14px 24px 0;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 12px;
+	justify-content: space-between;
 }
 .filter__title {
 	width: 100%;
 	font-size: var(--size-md);
 }
+.filter__action {
+	width: 100%;
+	height: 64px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.filter__button {
+	padding: 6px 22px;
+	background-color: var(--color-raisin);
+	/* background-color: transparent; */
+	/* border: 1px solid var(--color-cultured); */
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+	color: var(--color-cultured);
+	transition: all .5s cubic-bezier(0,0,.2,1);
+}
+.filter__button:hover {
+	transform: scale3d(1.08,1.08,1.08);
+}
 .type {
 	font-size: var(--size-sm);
-	padding: 4px 6px;
+	padding: 4px 12px;
 	border-radius: 10px;
-	/* background-color: aqua; */
 	color: var(--color-ra);
+	cursor: pointer;
 }
 
 /*-------------------TYPES MODIFIERS----------------*/
@@ -357,6 +381,7 @@ html {
 .main__cards {
 	width: 100%;
 	height: auto;
+	min-height: 100vh;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -390,9 +415,14 @@ html {
 .card__name::first-letter {
 	text-transform: capitalize;
 }
+.card__types {
+	display: flex;
+	gap: 8px;
+}
 .card__types .type {
 	display: inline-block;
 	width: 68px;
+	cursor: default;
 }
 .card__types .type::first-letter {
 	text-transform: capitalize;
