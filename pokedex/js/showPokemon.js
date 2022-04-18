@@ -8,6 +8,9 @@ const main = document.getElementById('main');
 const closeInfo = document.getElementById('close-info');
 
 function showPokemon(pokemon, pokemonSpecies) {
+  //  Go to the start of the page
+  window.scroll( {top: 0, left: 0, behavior: 'smooth' } );
+
   //  Hide main section
   main.setAttribute('class', 'main--inactive');
   
@@ -119,7 +122,7 @@ function showPokemon(pokemon, pokemonSpecies) {
     let actualPokemonInfo = await fetchData(actualPokemonSpecies.varieties[0].pokemon.url)
     
     //  Make card
-    let evolutionCard = makeCard(actualPokemonInfo, stage);
+    let evolutionCard = makeCard(actualPokemonInfo, stage, actualPokemonSpecies);
     
     evolutionDiv.appendChild(evolutionCard);
     
@@ -133,7 +136,7 @@ function showPokemon(pokemon, pokemonSpecies) {
         actualPokemonSpecies = await fetchData(actualPokemon.url);
         actualPokemonInfo = await fetchData(actualPokemonSpecies.varieties[0].pokemon.url)
         
-        evolutionCard = makeCard(actualPokemonInfo, stage);
+        evolutionCard = makeCard(actualPokemonInfo, stage, actualPokemonSpecies);
         evolutionDiv.appendChild(evolutionCard);
       }
     } else if ( (stage.evolves_to).length > 1 ) {
@@ -143,7 +146,7 @@ function showPokemon(pokemon, pokemonSpecies) {
         actualPokemonSpecies = await fetchData(evolution.species.url);
         actualPokemonInfo = await fetchData(actualPokemonSpecies.varieties[0].pokemon.url)
         
-        evolutionCard = makeCard(actualPokemonInfo, evolution);
+        evolutionCard = makeCard(actualPokemonInfo, evolution, actualPokemonSpecies);
         evolutionDiv.appendChild(evolutionCard);
       });
     }
@@ -162,7 +165,7 @@ export default showPokemon;
 
 
 //  Function to build the evolution card
-function makeCard(pokemon, stage) {
+function makeCard(pokemon, stage, pokemonSpecies) {
   //  Build card div
   const evolutionCard = document.createElement('div');
   evolutionCard.classList.add('evolution__card');
@@ -194,6 +197,14 @@ function makeCard(pokemon, stage) {
   closeInfo.classList.remove('pokemon__close-icon');
   closeInfo.classList.add('pokemon__close-icon--active');
   closeInfo.addEventListener('click', backToMain);
+
+  evolutionCard.addEventListener('click', () => { 
+    let pokemonSection = document.getElementById('pokemon');
+    pokemonSection.remove();
+
+    pokemonSection = showPokemon(pokemon, pokemonSpecies);
+		document.body.appendChild(pokemonSection);
+  });
 
   return evolutionCard;
 }
