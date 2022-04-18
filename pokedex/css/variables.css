@@ -1,0 +1,33 @@
+:root {
+	--color-cultured: #F5F4F5;
+	--size-sm: 1.3rem;
+	--size-subtitle: 1.5rem;
+	--size-md: 1.8rem;
+	--size-ln: 2.2rem;
+	--color-black-raisin: #27262C;
+	--color-raisin: #312F37;
+	--color-light-gray: #D4D3D9;
+	
+	--color-raisin-purple: #1D1C21;
+	--color-manatee: #9F9CAB;
+	--color-type-normal: #a4acaf;
+	--color-type-fighting: #d56723;
+	--color-type-flying: #3dc7ef;
+	--color-type-poison: #b97fc9;
+	--color-type-ground: #ab9842;
+	--color-type-rock: #a38c21;
+	--color-type-bug: #729f3f;
+	--color-type-ghost: #7b62a3;
+	--color-type-steel: #9eb7b8;
+	--color-type-fire: #fd7d24;
+	--color-type-water: #4592c4;
+	--color-type-grass: #9bcc50;
+	--color-type-electric: #eed535;
+	--color-type-psychic: #f366b9;
+	--color-type-ice: #51c4e7;
+	--color-type-dragon: #f16e57;
+	--color-type-dark: #131316;
+	--color-type-fairy: #fdb9e9;
+	--color-type-unknown: transparent;
+	--color-type-shadow: #1F1627;
+}

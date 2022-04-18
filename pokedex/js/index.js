@@ -166,6 +166,8 @@ const getPokemonInfo = async (url_api, actualRegion, htmlElement, filteredTypes=
 		for (const element of regionPokedex.pokemon_entries) {
 			const pokemon = await fetchData(element.pokemon_species.url);
 			const pokemonInfo = await fetchData(pokemon.varieties[0].pokemon.url);
+			console.log(pokemon);
+			console.log(pokemonInfo);
 
 			//	Variable to avoid duplicated pokemons
 			let alreadyFiltered = false;

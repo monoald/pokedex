@@ -9,43 +9,6 @@ html {
   font-family: 'Roboto', sans-serif;
 }
 
-/* body {
-	background-image: url("/img/images/background.jpeg");
-} */
-
-:root {
-	--color-cultured: #F5F4F5;
-	--size-sm: 1.2rem;
-	--size-subtitle: 1.6rem;
-	--size-md: 1.8rem;
-	--size-ln: 2.2rem;
-	--color-raisin: #27262C;
-	--color-rais: #312F37;
-	--color-light-gray: #D4D3D9;
-	--color-dark-silver: #44424D;
-	--color-ra: #1D1C21;
-	--color-manatee: #9F9CAB;
-	--color-type-normal: #a4acaf;
-	--color-type-fighting: #d56723;
-	--color-type-flying: #3dc7ef;
-	--color-type-poison: #b97fc9;
-	--color-type-ground: #ab9842;
-	--color-type-rock: #a38c21;
-	--color-type-bug: #729f3f;
-	--color-type-ghost: #7b62a3;
-	--color-type-steel: #9eb7b8;
-	--color-type-fire: #fd7d24;
-	--color-type-water: #4592c4;
-	--color-type-grass: #9bcc50;
-	--color-type-electric: #eed535;
-	--color-type-psychic: #f366b9;
-	--color-type-ice: #51c4e7;
-	--color-type-dragon: #f16e57;
-	--color-type-dark: #131316;
-	--color-type-fairy: #fdb9e9;
-	--color-type-unknown: transparent;
-	--color-type-shadow: #1F1627;
-}
 /*------------------------------------------------IMAGES--------------------------------------*/
 
 .image {
@@ -53,116 +16,10 @@ html {
 	object-fit: cover;
 }
 
-/*------------------------------------------------HEADER---------------------------------*/
-.header {
-  width: 100%;
-  height: 44px;
-  background-color: var(--color-ra);
-	color: var(--color-cultured);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 14px;
-}
-.header__logo {
-	width: 18px;
-	height: 18px;
-}
-.header__menu-icon {
-	display: block;
-	width: 24px;
-	height: 24px;
-	position: absolute;
-	right: 18px;
-}
-.header__menu-icon--inactive {
-	display: none;
-}
-.menu {
-	width: 100%;
-	position: sticky;
-	top: 44px;
-	color: var(--color-cultured);
-}
-.menu__container {
-	width: auto;
-	display: none;
-}
-.menu__container--active {
-	width: 60%;
-	height: 100vh;
-	background-color: var(--color-ra);
-	position: absolute;
-	top: -44px;
-	right: 0;
-}
-
-
-/*---------------------MENU----------*/
-
-
-.menu__close-icon {
-	width: 26px;
-	height: 26px;
-	position: absolute;
-	top: 8px;
-	right: 8px;
-}
-.menu__title {
-	height: 44px;
-	margin: 0 20px;
-	border-bottom: 1px solid var(--color-dark-silver);
-	font-size: var(--size-ln);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-.menu__list {
-	list-style: none;
-	display: flex;
-	flex-direction: column;
-	padding: 24px;
-	gap: 12px;
-}
-.list-item {
-	font-size: var(--size-sm);
-}
-.list-item__link {
-	text-decoration: none;
-	color: var(--color-manatee);
-}
-.list-item--active .list-item__link {
-	color: var(--color-cultured);
-}
-
-.menu__credits {
-	width: 100%;
-	position: absolute;
-	bottom: 24px;
-	display: flex;
-	flex-direction: column;
-	text-align: center;
-	justify-content: center;
-	gap: 8px;
-	font-size: var(--size-sm);
-}
-.link {
-	color: var(--color-cultured);
-}
-
-
-.icon {
-	transition: all .3s cubic-bezier(0,0,.4,5);
-	cursor: pointer;
-}
-.icon:hover {
-	transform: scale3d(1.07,1.07,1.07);
-}
-
 /*-----------------------------------------------MAIN-------------------------------------------*/
 
 .main {
-	background-color: var(--color-rais);
+	background-color: var(--color-raisin);
 	width: 100%;
 	height: auto;
 	display: flex;
@@ -240,7 +97,7 @@ html {
 	width: 100%;
 	height: auto;
 	color: var(--color-cultured);
-	background-color: var(--color-dark-silver);
+	background-color: transparent;
 	box-shadow: 0 12px 12px rgb(0 0 0 / 24%);
 }
 .filter__back {
@@ -289,9 +146,7 @@ html {
 }
 .filter__button {
 	padding: 6px 22px;
-	background-color: var(--color-raisin);
-	/* background-color: transparent; */
-	/* border: 1px solid var(--color-cultured); */
+	background-color: var(--color-black-raisin);
 	border: none;
 	border-radius: 12px;
 	cursor: pointer;
@@ -301,81 +156,6 @@ html {
 .filter__button:hover {
 	transform: scale3d(1.08,1.08,1.08);
 }
-.type {
-	font-size: var(--size-sm);
-	padding: 4px 12px;
-	border-radius: 10px;
-	color: var(--color-ra);
-	cursor: pointer;
-}
-
-/*-------------------TYPES MODIFIERS----------------*/
-
-.type--normal {
-	background-color: var(--color-type-normal);
-}
-.type--fighting {
-	background-color: var(--color-type-fighting);
-}
-.type--flying {
-	background-color: var(--color-type-flying);
-}
-.type--poison {
-	background-color: var(--color-type-poison);
-}
-.type--ground {
-	background-color: var(--color-type-ground);
-}
-.type--rock {
-	background-color: var(--color-type-rock);
-}
-.type--bug {
-	background-color: var(--color-type-bug);
-}
-.type--ghost {
-	background-color: var(--color-type-ghost);
-}
-.type--steel {
-	background-color: var(--color-type-steel);
-}
-.type--fire {
-	background-color: var(--color-type-fire);
-}
-.type--water {
-	background-color: var(--color-type-water);
-}
-.type--grass {
-	background-color: var(--color-type-grass);
-}
-.type--electric {
-	background-color: var(--color-type-electric);
-}
-.type--psychic {
-	background-color: var(--color-type-psychic);
-}
-.type--ice {
-	background-color: var(--color-type-ice);
-}
-.type--dragon {
-	background-color: var(--color-type-dragon);
-}
-.type--dark {
-	background-color: var(--color-type-dark);
-	color: var(--color-cultured);
-}
-.type--fairy {
-	background-color: var(--color-type-fairy);
-}
-.type--unknown {
-	background-color: var(--color-type-unknown);
-	border: 1px solid var(--color-cultured);
-	color: var(--color-cultured);
-}
-.type--shadow {
-	background-color: var(--color-type-shadow);
-	color: var(--color-cultured);
-}
-
 
 /*-----------------------CARDS-----------------------*/
 .main__cards {
