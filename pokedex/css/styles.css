@@ -300,3 +300,16 @@ html {
 	display: flex;
 	justify-content: center;
 }
+
+.pokemon__close-icon {
+	display: none;
+}
+.pokemon__close-icon--active {
+	display: block;
+	cursor: pointer;
+	position: absolute;
+	top: 62px;
+	right: 8px;
+	width: 26px;
+	height: 26px;
+}

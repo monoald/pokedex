@@ -9,7 +9,7 @@ import selectDeselectTypeFilter from "../utils/selectDeselectTypeFilter.js";
 import refreshCardContainer from "../utils/refreshCardContainer.js";
 import makeCard from "../utils/makeCard.js";
 import makeCardTypes from "../utils/makeCardTypes.js";
-import showPokemon from "../utils/showPokemon.js";
+import showPokemon from "./showPokemon.js";
 
 //  Pokemon API
 const API = 'https://pokeapi.co/api/v2/';

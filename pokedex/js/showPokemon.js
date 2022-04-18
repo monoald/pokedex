@@ -1,19 +1,22 @@
 //  Function to hide main section and show Pokemon info
 
-import fetchData from "./fetchData.js";
-import makeCardTypes from "./makeCardTypes.js";
+import fetchData from "../utils/fetchData.js";
+import makeCardTypes from "../utils/makeCardTypes.js";
+import backToMain from "../utils/backToMain.js";
 
 const main = document.getElementById('main');
+const closeInfo = document.getElementById('close-info');
 
 function showPokemon(pokemon, pokemonSpecies) {
   //  Hide main section
   main.setAttribute('class', 'main--inactive');
-
+  
   // console.log(pokemon);
   // console.log(pokemonSpecies);
   //  Build the Pokemon section
   const pokemonSection = document.createElement('section');
   pokemonSection.classList.add('pokemon');
+  pokemonSection.setAttribute('id', 'pokemon')
   pokemonSection.innerHTML = `
     <h2 class="pokemon__name">${pokemon.name}</h2>
   `
@@ -185,6 +188,12 @@ function makeCard(pokemon, stage) {
 
   const cardTypes = makeCardTypes(pokemon.types);
   evolutionCard.appendChild(cardTypes);
+
+
+  //  Show close-icon 
+  closeInfo.classList.remove('pokemon__close-icon');
+  closeInfo.classList.add('pokemon__close-icon--active');
+  closeInfo.addEventListener('click', backToMain);
 
   return evolutionCard;
 }
