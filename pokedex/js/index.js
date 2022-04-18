@@ -9,6 +9,7 @@ import selectDeselectTypeFilter from "../utils/selectDeselectTypeFilter.js";
 import refreshCardContainer from "../utils/refreshCardContainer.js";
 import makeCard from "../utils/makeCard.js";
 import makeCardTypes from "../utils/makeCardTypes.js";
+import showPokemon from "../utils/showPokemon.js";
 
 //  Pokemon API
 const API = 'https://pokeapi.co/api/v2/';
@@ -119,17 +120,24 @@ const region = (regionActive[0].innerText).toLowerCase();
 
 //------CREATE CARDS---------
 
-const createCards = (pokemon, htmlElement) => {
+const createCards = (pokemon, htmlElement, pokemonSpecies) => {
 	//	Make cards
 	const newPokemon = makeCard(pokemon);
 	htmlElement.appendChild(newPokemon);
-
+	//	Hear event for each pokemon card created
+	newPokemon.addEventListener('click', () => {
+		const pokemonSection = showPokemon(pokemon, pokemonSpecies);
+		document.body.appendChild(pokemonSection);
+	});
+	
 	//	Make pokemon type and append to the card
 	const cardTypes = document.getElementById(`card__${pokemon.name}`);
-	const newType = makeCardTypes(pokemon.types);
+	const newType = makeCardTypes(pokemon.types, 'card__types');
 	cardTypes.appendChild(newType);
+	
 }
 
+// export default po;
 //------
 
 
@@ -166,8 +174,8 @@ const getPokemonInfo = async (url_api, actualRegion, htmlElement, filteredTypes=
 		for (const element of regionPokedex.pokemon_entries) {
 			const pokemon = await fetchData(element.pokemon_species.url);
 			const pokemonInfo = await fetchData(pokemon.varieties[0].pokemon.url);
-			console.log(pokemon);
-			console.log(pokemonInfo);
+			// console.log(pokemon);
+			// console.log(pokemonInfo);
 
 			//	Variable to avoid duplicated pokemons
 			let alreadyFiltered = false;
@@ -180,14 +188,14 @@ const getPokemonInfo = async (url_api, actualRegion, htmlElement, filteredTypes=
 							//	Don't duplicate pokemons
 						} else {
 							if (type.type.name == element) {
-								createCards(pokemonInfo, htmlElement);
+								createCards(pokemonInfo, htmlElement, pokemon);
 								alreadyFiltered = true;
 							}
 						}				
 					}
 				});
 			} else {
-				createCards(pokemonInfo, htmlElement);
+				createCards(pokemonInfo, htmlElement, pokemon);
 			}
 		}
 		

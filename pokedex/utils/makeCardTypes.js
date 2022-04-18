@@ -1,9 +1,9 @@
 //  Create the types of the pokemon 
 
-const makeCardTypes = (types) => {
+const makeCardTypes = (types, className) => {
   const newType = document.createElement('div');
 
-  newType.classList.add('card__types');
+  newType.classList.add(className);
 
   for (const type of types) {
 

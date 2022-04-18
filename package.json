@@ -4,7 +4,8 @@
   "description": "Pokedex built with pokemon API",
   "main": "pokedex/js/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "index": "node pokedex/js/index.js",
+    "pokemon": "node pokedex/js/pokemon.js"
   },
   "repository": {
     "type": "git",
