@@ -7,8 +7,11 @@ const filterIcon = document.getElementById('filter-icon');
 
 const showFilters = () => {
     filterSection.setAttribute('class', 'filter--active');
-    regionsSection.setAttribute('class', 'main__regions--inactive');
     filterIcon.setAttribute('class', 'main__icon--inactive')
+
+    if (regionsSection != null) {
+        regionsSection.setAttribute('class', 'main__regions--inactive');
+    }
 }
 
 //  Export function

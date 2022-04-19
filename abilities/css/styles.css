@@ -1,0 +1,10 @@
+.main {
+	background-color: var(--color-raisin);
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-wrap: wrap;
+}
+.main--inactive {
+	display: none;
+}

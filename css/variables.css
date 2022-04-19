@@ -1,3 +1,14 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Roboto', sans-serif;
+}
+
 :root {
 	--color-cultured: #F5F4F5;
 	--size-sm: 1.3rem;

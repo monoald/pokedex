@@ -1,8 +1,8 @@
 //  Function to hide main section and show Pokemon info
 
-import fetchData from "../utils/fetchData.js";
-import makeCardTypes from "../utils/makeCardTypes.js";
-import backToMain from "../utils/backToMain.js";
+import fetchData from "/js/utils/fetchData.js"
+import makeCardTypes from "/js/utils/makeCardTypes.js"
+import backToMain from '/js/utils/backToMain.js'
 
 const main = document.getElementById('main');
 const closeInfo = document.getElementById('close-info');
@@ -182,7 +182,10 @@ function makeCard(pokemon, stage, pokemonSpecies) {
     evolutionCard.innerHTML +=  `<span class="card__evolution-level">Baby Form</span>`
   } else if ( (stage.evolution_details).length == 0 ) {
     evolutionCard.innerHTML += `<span class="card__evolution-level">Base Pokemon</span>`
-  } else if ( stage.evolution_details[0].min_level == null) {
+  } else if ( stage.evolution_details[0].trigger.name == 'trade' ) {
+    evolutionCard.innerHTML += `<span class="card__evolution-level">Trade Evolution</span>`
+  }
+   else if ( stage.evolution_details[0].min_level == null) {
     evolutionCard.innerHTML += `<span class="card__evolution-level">Stone Evolution</span>`
   }
   else {

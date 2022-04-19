@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="/img/icons/pokeball.png">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <title>Pokedex</title>
+  <title>Abilities</title>
   <link rel="stylesheet" href="/css/variables.css">
   <link rel="stylesheet" href="/css/header.css">
   <link rel="stylesheet" href="/css/filter.css">
@@ -41,11 +41,11 @@
   
       <ul class="menu__list">
         
-        <li class="menu__item list-item list-item--active">
+        <li class="menu__item list-item">
           <a class="list-item__link" href="/pokedex/index.html">Pokedex</a>
         </li>
         
-        <li class="menu__item list-item">
+        <li class="menu__item list-item  list-item--active">
           <a class="list-item__link" href="/abilities/index.html">Abilities</a>
         </li>
         
@@ -61,131 +61,14 @@
       </section>
     </nav>
   </div>
-
+  
   <main class="main" id="main">
-    
+
     <div class="main__filter" >
       <figure class="main__icon icon" id="filter-icon">
         <img class="image" src="/img/icons/filter.png" alt="filter">
       </figure>
     </div>
-    
-    <nav class="main__regions" id="regions">
-      <ul class="region">
-
-        <li class="region__item region__item--active">
-          <p>National</p>
-        </li>
-
-        <li class="region__item">
-          <p>Kanto</p>
-        </li>
-
-        <li class="region__item">
-          <p>Original-Johto</p>
-        </li>
-
-        <li class="region__item">
-          <p>Hoenn</p>
-        </li>
-
-        <li class="region__item">
-          <p>Original-Sinnoh</p>
-        </li>
-
-        <li class="region__item">
-          <p>Extended-Sinnoh</p>
-        </li>
-
-        <li class="region__item">
-          <p>Updated-Johto</p>
-        </li>
-
-        <li class="region__item">
-          <p>Original-Unova</p>
-        </li>
-
-        <li class="region__item">
-          <p>Updated-Unova</p>
-        </li>
-
-        <li class="region__item">
-          <p>Conquest-Gallery</p>
-        </li>
-
-        <li class="region__item">
-          <p>Kalos-Central</p>
-        </li>
-
-        <li class="region__item">
-          <p>Kalos-Coastal</p>
-        </li>
-
-        <li class="region__item">
-          <p>Kalos-Mountain</p>
-        </li>
-
-        <li class="region__item">
-          <p>Updated-Hoenn</p>
-        </li>
-
-        <li class="region__item">
-          <p>Original-Alola</p>
-        </li>
-
-        <li class="region__item">
-          <p>Original-Melemele</p>
-        </li>
-
-        <li class="region__item">
-          <p>Original-Akala</p>
-        </li>
-
-        <li class="region__item">
-          <p>Original-Ulaula</p>
-        </li>
-
-        <li class="region__item">
-          <p>Original-Poni</p>
-        </li>
-
-        <li class="region__item">
-          <p>Updated-Alola</p>
-        </li>
-
-        <li class="region__item">
-          <p>Updated-Melemele</p>
-        </li>
-
-        <li class="region__item">
-          <p>Updated-Akala</p>
-        </li>
-
-        <li class="region__item">
-          <p>Updated-Ulaula</p>
-        </li>
-
-        <li class="region__item">
-          <p>Updated-Poni</p>
-        </li>
-
-        <li class="region__item">
-          <p>LetsGo-Kanto</p>
-        </li>
-
-        <li class="region__item">
-          <p>Galar</p>
-        </li>
-
-        <li class="region__item">
-          <p>Isle-Of-Armor</p>
-        </li>
-
-        <li class="region__item">
-          <p>Crown-Tundra</p>
-        </li>
-      </ul>
-    </nav>
 
     <section class="filter" id="filter-section">
 
@@ -207,18 +90,9 @@
         <button class="filter__button" id="filter-button">Filter</button>
       </div>
     </section>
-
-    <section class="main__cards"  id="cards-container">
-
-    </section>
-
   </main>
 
-  <figure class="pokemon__close-icon icon" id="close-info">
-    <img class="image" src="/img/icons/close.png" alt="Close Pokemon Info">
-  </figure>
-
-  <script type="module" src="/js/headerAndMenu.js"></script>
   <script type="module" src="./js/index.js"></script>
+  <script type="module" src="/js/headerAndMenu.js"></script>
 </body>
 </html>
