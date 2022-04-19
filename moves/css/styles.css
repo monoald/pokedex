@@ -1,0 +1,61 @@
+/*------------------------------------MAIN---------------------------------------*/
+.main {
+	background-color: var(--color-raisin);
+	width: 100%;
+	height: auto;
+	min-height: 100vh;
+	display: flex;
+	flex-wrap: wrap;
+}
+.main--inactive {
+	display: none;
+}
+/* .main__filter */
+
+/*------------------MOVES---------------------*/
+
+.main__cards {
+	width: 100%;
+	height: auto;
+	min-height: 100vh;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 12px 0;
+	align-items: flex-start;
+	justify-content: center;
+	gap: 60px;
+}
+.move {
+	width: 80%;
+	max-width: 360px;
+	height: auto;
+	padding: 20px;
+	box-shadow: 0 18px 28px rgb(0 0 0 / 64%);
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	color: var(--color-cultured);
+	font-size: var(--size-sm);
+	text-align: center;
+	cursor: pointer;
+}
+.move__general {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 18px;
+
+}
+.move__name::first-letter {
+	text-transform: capitalize;
+}
+.move__info {
+	padding: 0 28px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+.move__item {
+	padding: 4px 18px;
+}

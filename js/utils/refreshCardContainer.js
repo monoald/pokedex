@@ -1,4 +1,4 @@
-
+//  Function to stop the last request and clean the card contanier
 const main = document.getElementById('main');
 let cardsContainer = document.getElementById('cards-container');
 
