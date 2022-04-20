@@ -1,7 +1,5 @@
 //--------------=---IMPORT FUNCTIONS------------------
-import fetchData from "/js/utils/fetchData.js";
 import makeType from "/js/utils/makeType.js"
-import refreshCardContainer from "/js/utils/refreshCardContainer.js";
 import makeCard from "/js/utils/makeCard.js";
 import makeCardTypes from "/js/utils/makeCardTypes.js";
 import showPokemon from "./showPokemon.js";
@@ -9,6 +7,14 @@ import selectDeselectTypeFilter from "/js/utils/selectDeselectTypeFilter.js";
 
 //  Pokemon API
 const API = 'https://pokeapi.co/api/v2/';
+
+
+//----------------INITIALIZE ABORT VARIABLES--------------
+
+
+let controllerGlobal = new AbortController();
+let signalGlobal = controllerGlobal.signal;
+
 
 //------------------TYPES REQUEST------------------------
 
@@ -19,7 +25,7 @@ const typesContainer = document.getElementById('type-container');
 const getTypes = async (url_api) => {
 	try {
 		
-		const types = await fetchData(`${url_api}type/`);
+		const types = await fetch(`${url_api}type/`).then((res) => res.json());
 		
 		//  Append types for filters
 		types.results.map( type => {
@@ -41,7 +47,8 @@ const getTypes = async (url_api) => {
 		filterButton.addEventListener('click', filterPokemons);
 
 		//	Add filters
-		function filterPokemons() {			
+		function filterPokemons() {		
+			
 			
 			//	Get and store selected filters
 			let typesToFilter = [];
@@ -54,11 +61,22 @@ const getTypes = async (url_api) => {
 			activeRegion = (activeRegion[0].innerText).trim().toLowerCase();
 			
 			//	Refresh the card container to stop the last request and add the new cards
-			cardsContainer = refreshCardContainer();
-			//	Show the filtered pokemons
-			// getPokemonInfo(API, activeRegion, cardsContainer,typesToFilter);
-		};
+			// cardsContainer = refreshCardContainer();
+			
+			console.log('Download aborted');
+			cardsContainer.innerHTML = "";
+			
+			//	Abort previous request
+			controllerGlobal.abort();
+			
+			//	Reset abort variables
+			controllerGlobal = new AbortController;
+			signalGlobal = controllerGlobal.signal;
 
+			
+			//	Show the filtered pokemons
+			getPokemonInfo(API, activeRegion, cardsContainer,typesToFilter, signalGlobal);
+		};
 
 	} catch (error) {
 		console.error(error);
@@ -102,15 +120,14 @@ const createCards = (pokemon, htmlElement, pokemonSpecies) => {
 
 let cardsContainer = document.getElementById('cards-container');
 
-const getPokemonInfo = async (url_api, actualRegion, htmlElement, filteredTypes=null) => {
+const getPokemonInfo = async (url_api, actualRegion, htmlElement, filteredTypes=null, signal=null) => {
 	try {
-		
 		//	Container to append cards
 		const regions = [];
 
 		//	Get all regions
-		const regionsPage1 = await fetchData(`${url_api}pokedex/`);
-		const regionsPage2 = await fetchData(`${regionsPage1.next}`);
+		const regionsPage1 = await fetch(`${url_api}pokedex/`).then((res) => res.json());
+		const regionsPage2 = await fetch(`${regionsPage1.next}`).then((res) => res.json());
 		
 		//	Store all regions
 		regionsPage1.results.map( region => {
@@ -125,16 +142,16 @@ const getPokemonInfo = async (url_api, actualRegion, htmlElement, filteredTypes=
 		let regionPokedex;
 		for (const element of regions) {
 			if (element.name == actualRegion) {
-				regionPokedex = await fetchData(element.url);
-				console.log(regionPokedex);
+				regionPokedex = await fetch(element.url).then((res) => res.json());
 			}
 		}
 
 		//	Make a card for each Pokemon
 		for (const element of regionPokedex.pokemon_entries) {
-			const pokemon = await fetchData(element.pokemon_species.url);
-			const pokemonInfo = await fetchData(pokemon.varieties[0].pokemon.url);
-			// console.log(pokemon);
+			//	Request prepared to be cancel
+			const pokemon = await fetch(element.pokemon_species.url, {signal}).then((res) => res.json()).catch((e) => console.error(e));
+			const pokemonInfo = await fetch(pokemon.varieties[0].pokemon.url, {signal}).then((res) => res.json()).catch((e) => console.error(e));
+			console.log('Hola bb');
 			// console.log(pokemonInfo);
 
 			//	Variable to avoid duplicated pokemons
@@ -165,7 +182,7 @@ const getPokemonInfo = async (url_api, actualRegion, htmlElement, filteredTypes=
 }
 
 //	Show initial pokedex
-getPokemonInfo(API, region, cardsContainer);
+getPokemonInfo(API, region, cardsContainer, null, signalGlobal);
 
 
 //------------------------SWITCH POKEDEX-------------------
@@ -184,8 +201,10 @@ regionsElement.forEach( element => {
 //	Function to build the pokedex according to the actual region
 function switchRegions() {
 	//	Refresh the card container to stop the last request and add the new cards
-	cardsContainer = refreshCardContainer();
+	// cardsContainer = refreshCardContainer();
+	cardsContainer.innerHTML = ''
 
+	
 	//	Deactivate every region element
 	regionsElement.forEach( region => {
 		region.classList.remove('region__item--active');
@@ -197,8 +216,19 @@ function switchRegions() {
 	//	Get the new region name
 	const regionActive = document.getElementsByClassName('region__item--active');
 	const region = (regionActive[0].innerText).toLowerCase();
-
+	
 	//	Build pokedex according to the active region
-	getPokemonInfo(API, region, cardsContainer);
+	// getPokemonInfo(API, region, cardsContainer, null, signalGlobal);
+
+	//	Abort previous request
+	controllerGlobal.abort();
+			
+	//	Reset abort variables
+	controllerGlobal = new AbortController;
+	signalGlobal = controllerGlobal.signal;
+
+	
+	//	Show the filtered pokemons
+	getPokemonInfo(API, region, cardsContainer, null, signalGlobal);
 };
 

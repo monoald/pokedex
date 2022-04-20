@@ -8,7 +8,7 @@ const makeCard = (pokemon) => {
 
   newPokemon.innerHTML = `
   <figure class="card__image">
-    <img class="image" src="${pokemon.sprites.other['official-artwork'].front_default}" alt="${pokemon.name} image">
+    <img class="image" src="${ (pokemon.sprites.other['official-artwork'].front_default == null) ? "https://images-na.ssl-images-amazon.com/images/I/71WkWKFRSWL.png" : pokemon.sprites.other['official-artwork'].front_default}" alt="${pokemon.name} image">
   </figure>
 
   <div class="card__description">

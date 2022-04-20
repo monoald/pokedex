@@ -1,6 +1,4 @@
 //  Function to hide main section and show Pokemon info
-
-import fetchData from "/js/utils/fetchData.js"
 import makeCardTypes from "/js/utils/makeCardTypes.js"
 import backToMain from '/js/utils/backToMain.js'
 
@@ -14,8 +12,6 @@ function showPokemon(pokemon, pokemonSpecies) {
   //  Hide main section
   main.setAttribute('class', 'main--inactive');
   
-  // console.log(pokemon);
-  // console.log(pokemonSpecies);
   //  Build the Pokemon section
   const pokemonSection = document.createElement('section');
   pokemonSection.classList.add('pokemon');
@@ -87,7 +83,8 @@ function showPokemon(pokemon, pokemonSpecies) {
   newAbility.innerHTML = `<h3 class="info__title">Abilities</h3>`
   
   pokemon.abilities.forEach(async ability => {
-    const abilitiesInfo = await fetchData(ability.ability.url);
+
+    const abilitiesInfo = await fetch(ability.ability.url).then((res) => res.json());
     
     newAbility.innerHTML += `
     <div class="info__item">
@@ -113,13 +110,13 @@ function showPokemon(pokemon, pokemonSpecies) {
 
   //  Append each pokemon evolution
   const getEvolutions = async () => {
-    const evolutionChain = await fetchData(pokemonSpecies.evolution_chain.url);
+    const evolutionChain = await fetch(pokemonSpecies.evolution_chain.url).then((res) => res.json());
     
     let stage = evolutionChain.chain; 
     let actualPokemon = stage.species;
     
-    let actualPokemonSpecies = await fetchData(actualPokemon.url);
-    let actualPokemonInfo = await fetchData(actualPokemonSpecies.varieties[0].pokemon.url)
+    let actualPokemonSpecies = await fetch(actualPokemon.url).then((res) => res.json());
+    let actualPokemonInfo = await fetch(actualPokemonSpecies.varieties[0].pokemon.url).then((res) => res.json());
     
     //  Make card
     let evolutionCard = makeCard(actualPokemonInfo, stage, actualPokemonSpecies);
@@ -133,8 +130,8 @@ function showPokemon(pokemon, pokemonSpecies) {
         stage = stage.evolves_to[0];
         actualPokemon = stage.species;
         
-        actualPokemonSpecies = await fetchData(actualPokemon.url);
-        actualPokemonInfo = await fetchData(actualPokemonSpecies.varieties[0].pokemon.url)
+        actualPokemonSpecies = await fetch(actualPokemon.url).then((res) => res.json());
+        actualPokemonInfo = await fetch(actualPokemonSpecies.varieties[0].pokemon.url).then((res) => res.json());
         
         evolutionCard = makeCard(actualPokemonInfo, stage, actualPokemonSpecies);
         evolutionDiv.appendChild(evolutionCard);
@@ -143,8 +140,8 @@ function showPokemon(pokemon, pokemonSpecies) {
       //  Make card for each multiple evolution base pokemon
       stage.evolves_to.forEach( async evolution => {    
         console.log(evolution);    
-        actualPokemonSpecies = await fetchData(evolution.species.url);
-        actualPokemonInfo = await fetchData(actualPokemonSpecies.varieties[0].pokemon.url)
+        actualPokemonSpecies = await fetch(evolution.species.url).then((res) => res.json());
+        actualPokemonInfo = await fetch(actualPokemonSpecies.varieties[0].pokemon.url).then((res) => res.json());
         
         evolutionCard = makeCard(actualPokemonInfo, evolution, actualPokemonSpecies);
         evolutionDiv.appendChild(evolutionCard);
@@ -171,6 +168,7 @@ function makeCard(pokemon, stage, pokemonSpecies) {
   evolutionCard.classList.add('evolution__card');
   evolutionCard.classList.add('card');
 
+  //  Set first HTML code
   evolutionCard.innerHTML = `
     <figure class="card__image">
       <img class="image" src="${pokemon.sprites.other['official-artwork'].front_default}" alt="Base Pokemon">
@@ -178,6 +176,7 @@ function makeCard(pokemon, stage, pokemonSpecies) {
 
     <h2 class="card__title">${pokemon.name}</h2>
   `
+  //  Set the Lvl. of evolution
   if (stage.is_baby) {
     evolutionCard.innerHTML +=  `<span class="card__evolution-level">Baby Form</span>`
   } else if ( (stage.evolution_details).length == 0 ) {
@@ -185,13 +184,14 @@ function makeCard(pokemon, stage, pokemonSpecies) {
   } else if ( stage.evolution_details[0].trigger.name == 'trade' ) {
     evolutionCard.innerHTML += `<span class="card__evolution-level">Trade Evolution</span>`
   }
-   else if ( stage.evolution_details[0].min_level == null) {
+  else if ( stage.evolution_details[0].min_level == null) {
     evolutionCard.innerHTML += `<span class="card__evolution-level">Stone Evolution</span>`
   }
   else {
     evolutionCard.innerHTML += `<span class="card__evolution-level">Lvl. ${stage.evolution_details[0].min_level}</span>`
   }
 
+  //  Append card types
   const cardTypes = makeCardTypes(pokemon.types);
   evolutionCard.appendChild(cardTypes);
 
@@ -201,6 +201,7 @@ function makeCard(pokemon, stage, pokemonSpecies) {
   closeInfo.classList.add('pokemon__close-icon--active');
   closeInfo.addEventListener('click', backToMain);
 
+  //  Event to open pokemon evolution info
   evolutionCard.addEventListener('click', () => { 
     let pokemonSection = document.getElementById('pokemon');
     pokemonSection.remove();

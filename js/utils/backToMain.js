@@ -4,6 +4,7 @@ const main = document.getElementById('main');
 const closeInfo = document.getElementById('close-info');
 
 async function backToMain() {
+  console.log('Hola Bonnie');
   const pokemonSection = document.getElementById('pokemon');
   main.setAttribute('class', 'main');
   

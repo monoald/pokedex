@@ -20,12 +20,12 @@ function makeMoveCard(move) {
     
     <div class="move__item">
       <h3 class="item__name">Accuracy</h3>
-      <span class="item__value">${move.accuracy}</span>
+      <span class="item__value">${ (move.accuracy == null) ? '--': move.accuracy }</span>
     </div>
 
     <div class="move__item">
       <h3 class="item__name">Power</h3>
-      <span class="item__value">${move.power}</span>
+      <span class="item__value">${ (move.power == null) ? '--': move.power}</span>
     </div>
 
     <div class="move__item">

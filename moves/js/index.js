@@ -1,17 +1,17 @@
-import fetchData from "/js/utils/fetchData.js";
 import makeMoveCard from "/js/utils/makeMoveCard.js";
 import makeType from "/js/utils/makeType.js";
 import selectDeselectTypeFilter from "/js/utils/selectDeselectTypeFilter.js";
-import refreshMoveContainer from "/js/utils/refreshMoveContainer.js";
-import showFilters from "/js/utils/showFilters.js";
+import showMoveInfo from "./showMoveInfo.js";
 
 //  Pokemon API
 const API = 'https://pokeapi.co/api/v2/';
 
-//--------------------SHOW FILTERS--------------------
+
+//----------------INITIALIZE ABORT VARIABLES--------------
 
 
-
+let controllerGlobal = new AbortController();
+let signalGlobal = controllerGlobal.signal;
 
 
 //------------------TYPES REQUEST------------------------
@@ -24,13 +24,15 @@ let main = document.getElementById('main');
 const getTypes = async (url_api) => {
 	try {
 		
-		const types = await fetchData(`${url_api}type/`);
+		const types = await fetch(`${url_api}type/`).then((res) => res.json());
 
 		
 		//  Append types for filters
 		types.results.map( type => {
-			const newType = makeType(type.name);
-			typesContainer.appendChild(newType)
+      if (type.name != 'unknown' && type.name != 'shadow') {
+        const newType = makeType(type.name);
+        typesContainer.appendChild(newType)
+      }
 		} );
 
 		//	Get the created types elements
@@ -52,21 +54,19 @@ const getTypes = async (url_api) => {
 			//	Get and store selected filters
 			let typesToFilter = [];
 			for (const type of filterSection.children) {
-				typesToFilter.push(type.innerHTML)
+				typesToFilter.push(type.innerHTML);
 			}
-			
-			//	Refresh the card container to stop the last request and add the new cards
-      main = refreshMoveContainer();
-      document.body.appendChild(main);
+			//  Abort previous request
+      controllerGlobal.abort();
+      console.log('Download aborted');
+      movesContainer.innerHTML = '';
+      
+      // Re-set abort values
+      controllerGlobal = new AbortController;
+			signalGlobal = controllerGlobal.signal;
 
-      showMoves(API, typesToFilter);
-
+      showMoves(API, typesToFilter, signalGlobal);
 		}
-    // const filterIcon = document.getElementById('filter-icon');
-    // //  Hear the event to action
-    // filterIcon.addEventListener('click', showFilters);
-
-    //  Get the filter icon element 
 
 
 	} catch (error) {
@@ -76,52 +76,57 @@ const getTypes = async (url_api) => {
 getTypes(API);
 
 
-//------------------
+//--------------ITEM REQUEST BUILD CARDS--------------
+
+function createCards(info) {
+  const newCard = makeMoveCard(info);
+  movesContainer.appendChild(newCard);
+  
+  //	Hear event for each move card created
+  newCard.addEventListener('click', () => {
+    const infoSection = showMoveInfo(info);
+    document.body.appendChild(infoSection);
+  });
+}
+
+
 //  Get main container to append move cards
 let movesContainer = document.getElementById('cards-container');
 
-const showMoves = async (url_api, filteredTypes = null) => {
+//  Get and show each move
+const showMoves = async (url_api, filteredTypes = null, signal=null) => {
   try {
     movesContainer = document.getElementById('cards-container');
     const moves = [];
 
-    let data = await fetchData(`${url_api}move/`);
+    let data = await fetch(`${url_api}move/`, {signal}).then((res) => res.json()).catch((e) => console.error(e));
   
     while (data.next != null) {
       for (const move of data.results) {
+        console.log('Hola BB');
 
-        const moveInfo = await fetchData(`${move.url}`);
-
-        // moves.push(moveInfo)
+        const moveInfo = await fetch(`${move.url}`, {signal}).then((res) => res.json()).catch((e) => console.error(e));
 
         if (filteredTypes) {
           filteredTypes.forEach( element => {
 
             if (element == moveInfo.type.name) {
-              console.log(element);
-              const newCard = makeMoveCard(moveInfo);
-              movesContainer.appendChild(newCard);
+              createCards(moveInfo);
             }
           });
         } else {
-          const newCard = makeMoveCard(moveInfo);
-          movesContainer.appendChild(newCard);  
+          createCards(moveInfo);
         }
   
       }
-      data = await fetchData(data.next);
+      data = await fetch(data.next).then((res) => res.json());
     } 
 
-    // for (const move of moves) {
-    //   const newCard = makeMoveCard(move);
-    //   movesContainer.appendChild(newCard);  
-    // }
-    // console.log(moves);
   } catch (error) {
     console.error(error);
   }
 
 }
 
-showMoves(API);
+showMoves(API, null, signalGlobal);
 
