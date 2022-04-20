@@ -17,7 +17,7 @@ html {
 .main {
     width: 100%;
     height: 100vh;
-    background-image: url(".../img/images/background.jpeg");
+    background-image: url("/pokedex/img/images/background.jpeg");
     display: grid;
     grid-template-rows: 1fr 0.4fr;
     place-items: center;
