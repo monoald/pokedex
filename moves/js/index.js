@@ -1,6 +1,6 @@
-import makeMoveCard from "/js/utils/makeMoveCard.js";
-import makeType from "/js/utils/makeType.js";
-import selectDeselectTypeFilter from "/js/utils/selectDeselectTypeFilter.js";
+import makeMoveCard from "../../js/utils/makeMoveCard.js";
+import makeType from "../../js/utils/makeType.js";
+import selectDeselectTypeFilter from "../../js/utils/selectDeselectTypeFilter.js";
 import showMoveInfo from "./showMoveInfo.js";
 
 //  Pokemon API

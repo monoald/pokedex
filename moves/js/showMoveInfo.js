@@ -1,6 +1,6 @@
-import makeCard from "/js/utils/makeCard.js";
-import makeCardTypes from "/js/utils/makeCardTypes.js";
-import showPokemon from "/pokedex/js/showPokemon.js";
+import makeCard from "../../js/utils/makeCard.js";
+import makeCardTypes from "../../js/utils/makeCardTypes.js";
+import showPokemon from "../../pokedex/js/showPokemon.js";
 
 //  Function to show move info
 

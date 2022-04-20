@@ -1,8 +1,8 @@
 //--------------=---IMPORT FUNCTIONS------------------
-import showMenu from "/js/utils/showMenu.js";
-import hideMenu from "/js/utils/hideMenu.js";
-import showFilters from "/js/utils/showFilters.js";
-import hideFilters from "/js/utils/hideFilters.js";
+import showMenu from "../../js/utils/showMenu.js";
+import hideMenu from "../../js/utils/hideMenu.js";
+import showFilters from "../../js/utils/showFilters.js";
+import hideFilters from "../../js/utils/hideFilters.js";
 //  Pokemon API
 const API = 'https://pokeapi.co/api/v2/';
 
