@@ -91,26 +91,3 @@
 	gap: 8px;
 	font-size: var(--size-sm);
 }
-.link {
-	color: var(--color-cultured);
-}
-
-.main {
-	width: 100%;
-	height: auto;
-}
-
-.icon {
-	transition: all .3s cubic-bezier(0,0,.4,5);
-	cursor: pointer;
-}
-.icon:hover {
-	transform: scale3d(1.07,1.07,1.07);
-}
-
-/*------------------------------------------------IMAGES--------------------------------------*/
-
-.image {
-	width: 100%;
-	object-fit: cover;
-}

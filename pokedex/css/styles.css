@@ -16,7 +16,6 @@
 .main__regions {
 	display: block;
 	width: 88%;
-	max-width: 88vw;
 	height: 62px;
 	max-height: 69px;
 }
@@ -32,9 +31,30 @@
 	font-size: var(--size-subtitle);
 	color: var(--color-manatee);
 	align-items: center;
-	overflow: auto;
+	overflow-x: auto;
 	padding: 0 14px;
 }
+/*-------SCROLL BAR-------*/
+/* .region::-webkit-scrollbar {
+	
+} */
+.region::-webkit-scrollbar{
+	height: 12px;
+	width: 8px;
+	background-color: var(--color-black-raisin);
+	border-radius: 100px;
+}
+.region::-webkit-scrollbar-thumb:horizontal{
+	background-color: #45424D;
+	border: 3px solid transparent;
+	border-radius: 100px;
+	background-clip: content-box;
+}
+.region::-webkit-scrollbar-thumb:hover {
+	background-color: var(--color-manatee);
+	cursor: pointer;
+}
+
 .region__item {
 	display: flex;
 	padding: 2px 2px;

@@ -8,6 +8,9 @@ html {
   font-size: 62.5%;
   font-family: 'Roboto', sans-serif;
 }
+body {
+	color: var(--color-cultured);
+}
 
 :root {
 	--color-cultured: #F5F4F5;
@@ -41,4 +44,31 @@ html {
 	--color-type-fairy: #fdb9e9;
 	--color-type-unknown: transparent;
 	--color-type-shadow: #1F1627;
+}
+
+
+/*------------------------------------------INDEPENDENT BLOCKS--------------------------*/
+
+
+.link {
+	color: var(--color-cultured);
+	text-decoration: none;
+}
+
+.main {
+	width: 100%;
+	height: auto;
+}
+
+.icon {
+	transition: all .3s cubic-bezier(0,0,.4,5);
+	cursor: pointer;
+}
+.icon:hover {
+	transform: scale3d(1.07,1.07,1.07);
+}
+
+.image {
+	width: 100%;
+	object-fit: cover;
 }

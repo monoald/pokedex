@@ -1,6 +1,6 @@
 //  Function to hide main section and show Pokemon info
-import makeCardTypes from "/js/utils/makeCardTypes.js"
-import backToMain from '/js/utils/backToMain.js'
+import makeCardTypes from "/js/utils/makeCardTypes.js";
+import backToMain from '/js/utils/backToMain.js';
 
 const main = document.getElementById('main');
 const closeInfo = document.getElementById('close-info');
@@ -18,7 +18,7 @@ function showPokemon(pokemon, pokemonSpecies) {
   pokemonSection.setAttribute('id', 'pokemon')
   pokemonSection.innerHTML = `
     <h2 class="pokemon__name">${pokemon.name}</h2>
-  `
+  `;
   //  Append each type of the pokemon
   const pokemonTypes = makeCardTypes(pokemon.types, 'types-container');
 
@@ -27,15 +27,17 @@ function showPokemon(pokemon, pokemonSpecies) {
 
   //  Build the rest of the page
   pokemonSection.innerHTML += `
-    <figure class="main__image">
-      <img class="image" src="${pokemon.sprites.other['official-artwork'].front_default}" alt="Pokemon Image">
-    </figure>
+    <div class="main__image">
+      <figure class="pokemon__image">
+        <img class="image" src="${pokemon.sprites.other['official-artwork'].front_default}" alt="Pokemon Image">
+      </figure>
+    </div>
 
     <section class="description">
       <p class="description__text">${(pokemonSpecies.flavor_text_entries[0].flavor_text).replace('', ' ')}</p>
     </section>
 
-    <section class="info">
+    <section class="info stats">
 
       <h3 class="info__title">Stats</h3>
 
@@ -69,18 +71,16 @@ function showPokemon(pokemon, pokemonSpecies) {
         <span class="info__value">${pokemon.stats[5].base_stat}</span>
       </div>
     </section>
-
-    <section class="info">
-  `
+  `;
   
   
   
   //  Append each abilitty of the pokemon
   const newAbility = document.createElement('section');
-  
   newAbility.classList.add('info');
+  newAbility.classList.add('abilities');
   
-  newAbility.innerHTML = `<h3 class="info__title">Abilities</h3>`
+  newAbility.innerHTML = `<h3 class="info__title">Abilities</h3>`;
   
   pokemon.abilities.forEach(async ability => {
 
@@ -102,7 +102,7 @@ function showPokemon(pokemon, pokemonSpecies) {
   evolutionSection.classList.add('evolution');
   evolutionSection.innerHTML = `
     <h2 class="evolution__title">Evolutions</h2>
-  `
+  `;
 
   //  Build evolution div
   const evolutionDiv = document.createElement('div');

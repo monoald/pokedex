@@ -1,0 +1,39 @@
+.pokemon__close-icon--active {
+  top: 84px;
+}
+.pokemon__name {
+  order: 1;
+}
+.types-container {
+  order: 2;
+  padding: 20px 0 40px;
+}
+
+.main__image {
+  width: 40%;
+  order: 3;
+}
+.stats {
+  width: 60%;
+  order: 4;
+  /* align-self: flex-start; */
+}
+.description {
+  width: 40%;
+  order: 5;
+  display: flex;
+  justify-content: center;
+}
+.description__text {
+  width: 88%;
+}
+.abilities {
+  width: 60%;
+  order: 6;
+}
+.evolution {
+  order: 7;
+}
+.evolution__cards-container {
+  display: flex;
+}

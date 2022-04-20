@@ -103,11 +103,15 @@
 	background-color: rgba(191, 189, 199, 0.1);
 }
 .move-info__cards-container {
+	width: 100%;
 	display: flex;
-	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 40px;
 }
 .move-info__subtitle {
 	padding: 22px;
+	width: 100%;
 }
 
 .pokemon__close-icon {
