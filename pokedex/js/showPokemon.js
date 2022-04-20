@@ -1,6 +1,6 @@
 //  Function to hide main section and show Pokemon info
-import makeCardTypes from "/js/utils/makeCardTypes.js";
-import backToMain from '/js/utils/backToMain.js';
+import makeCardTypes from "../../js/utils/makeCardTypes.js";
+import backToMain from '../../js/utils/backToMain.js';
 
 const main = document.getElementById('main');
 const closeInfo = document.getElementById('close-info');

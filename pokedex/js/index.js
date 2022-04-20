@@ -1,9 +1,9 @@
 //--------------=---IMPORT FUNCTIONS------------------
-import makeType from "../js/utils/makeType.js"
-import makeCard from "../js/utils/makeCard.js";
-import makeCardTypes from "../js/utils/makeCardTypes.js";
+import makeType from "../../js/utils/makeType.js"
+import makeCard from "../../js/utils/makeCard.js";
+import makeCardTypes from "../../js/utils/makeCardTypes.js";
 import showPokemon from "./showPokemon.js";
-import selectDeselectTypeFilter from "../js/utils/selectDeselectTypeFilter.js";
+import selectDeselectTypeFilter from "../../js/utils/selectDeselectTypeFilter.js";
 
 //  Pokemon API
 const API = 'https://pokeapi.co/api/v2/';
