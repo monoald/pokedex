@@ -12,12 +12,24 @@ function showPokemon(pokemon, pokemonSpecies) {
   //  Hide main section
   main.setAttribute('class', 'main--inactive');
   
+  //  Variables to use on the pokemon
+  const pokemonName = pokemon.name;
+  const pokemonImage = pokemon.sprites.other['official-artwork'].front_default;
+  const pokemonDescription = pokemonSpecies.flavor_text_entries.find( description => description.language.name == "en");
+  const pokemonEnglishDescription = pokemonDescription.flavor_text;
+  const pokemonHP = pokemon.stats[0].base_stat;
+  const pokemonAttack = pokemon.stats[1].base_stat;
+  const pokemonSpecialAttack = pokemon.stats[3].base_stat;
+  const pokemonDefense = pokemon.stats[2].base_stat;
+  const pokemonSpecialDefense = pokemon.stats[4].base_stat;
+  const pokemonSpeed = pokemon.stats[5].base_stat;
+  
   //  Build the Pokemon section
   const pokemonSection = document.createElement('section');
   pokemonSection.classList.add('pokemon');
   pokemonSection.setAttribute('id', 'pokemon')
   pokemonSection.innerHTML = `
-    <h2 class="pokemon__name">${pokemon.name}</h2>
+    <h2 class="pokemon__name">${pokemonName}</h2>
   `;
   //  Append each type of the pokemon
   const pokemonTypes = makeCardTypes(pokemon.types, 'types-container');
@@ -29,12 +41,12 @@ function showPokemon(pokemon, pokemonSpecies) {
   pokemonSection.innerHTML += `
     <div class="main__image">
       <figure class="pokemon__image">
-        <img class="image" src="${pokemon.sprites.other['official-artwork'].front_default}" alt="Pokemon Image">
+        <img class="image" src="${pokemonImage}" alt="Pokemon Image">
       </figure>
     </div>
 
     <section class="description">
-      <p class="description__text">${(pokemonSpecies.flavor_text_entries[0].flavor_text).replace('', ' ')}</p>
+      <p class="description__text">${(pokemonEnglishDescription).replace('', ' ')}</p>
     </section>
 
     <section class="info stats">
@@ -43,32 +55,32 @@ function showPokemon(pokemon, pokemonSpecies) {
 
       <div class="info__item">
         <h4 class="info__name">HP</h4>
-        <span class="info__value">${pokemon.stats[0].base_stat}</span>
+        <span class="info__value">${pokemonHP}</span>
       </div>
 
       <div class="info__item">
         <h4 class="info__name">Attack</h4>
-        <span class="info__value">${pokemon.stats[1].base_stat}</span>
+        <span class="info__value">${pokemonAttack}</span>
       </div>
       
       <div class="info__item">
       <h4 class="info__name">Special-Attack</h4>
-      <span class="info__value">${pokemon.stats[3].base_stat}</span>
+      <span class="info__value">${pokemonSpecialAttack}</span>
       </div>
       
       <div class="info__item">
       <h4 class="info__name">Special-Defense</h4>
-      <span class="info__value">${pokemon.stats[4].base_stat}</span>
+      <span class="info__value">${pokemonSpecialDefense}</span>
       </div>
       
       <div class="info__item">
         <h4 class="info__name">Defense</h4>
-        <span class="info__value">${pokemon.stats[2].base_stat}</span>
+        <span class="info__value">${pokemonDefense}</span>
       </div>
 
       <div class="info__item">
         <h4 class="info__name">Speed</h4>
-        <span class="info__value">${pokemon.stats[5].base_stat}</span>
+        <span class="info__value">${pokemonSpeed}</span>
       </div>
     </section>
   `;
@@ -85,11 +97,14 @@ function showPokemon(pokemon, pokemonSpecies) {
   pokemon.abilities.forEach(async ability => {
 
     const abilitiesInfo = await fetch(ability.ability.url).then((res) => res.json());
+
+    const abilitieDescription = abilitiesInfo.flavor_text_entries.find(description => description.language.name == 'en');
+    const abilitieEnglishDescription = abilitieDescription.flavor_text;
     
     newAbility.innerHTML += `
     <div class="info__item">
     <h3 class="info__name">${ability.ability.name}</h3>
-    <span class="info__value">${abilitiesInfo.flavor_text_entries[0].flavor_text}</span>
+    <span class="info__value">${abilitieEnglishDescription}</span>
     </div>
     `;
     
@@ -168,13 +183,17 @@ function makeCard(pokemon, stage, pokemonSpecies) {
   evolutionCard.classList.add('evolution__card');
   evolutionCard.classList.add('card');
 
+  //  Pokemon variables
+  const pokemonImage = pokemon.sprites.other['official-artwork'].front_default;
+  const pokemonName = pokemon.name;
+
   //  Set first HTML code
   evolutionCard.innerHTML = `
     <figure class="card__image">
-      <img class="image" src="${pokemon.sprites.other['official-artwork'].front_default}" alt="Base Pokemon">
+      <img class="image" src="${pokemonImage}" alt="Base Pokemon">
     </figure>
 
-    <h2 class="card__title">${pokemon.name}</h2>
+    <h2 class="card__title">${pokemonName}</h2>
   `
   //  Set the Lvl. of evolution
   if (stage.is_baby) {
@@ -183,11 +202,9 @@ function makeCard(pokemon, stage, pokemonSpecies) {
     evolutionCard.innerHTML += `<span class="card__evolution-level">Base Pokemon</span>`
   } else if ( stage.evolution_details[0].trigger.name == 'trade' ) {
     evolutionCard.innerHTML += `<span class="card__evolution-level">Trade Evolution</span>`
-  }
-  else if ( stage.evolution_details[0].min_level == null) {
+  } else if ( stage.evolution_details[0].min_level == null) {
     evolutionCard.innerHTML += `<span class="card__evolution-level">Stone Evolution</span>`
-  }
-  else {
+  } else {
     evolutionCard.innerHTML += `<span class="card__evolution-level">Lvl. ${stage.evolution_details[0].min_level}</span>`
   }
 
