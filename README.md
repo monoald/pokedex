@@ -40,3 +40,4 @@ As the Pokédex page, the move page show a bunch of move cards, when click on on
 Making this project, I use new knowledge acquired from [Platzi](https://platzi.com/). I use asynchronous functions, creating my on fetchData function with promises that later I replace with the native fetch function to use its abort functionality. Work with request is a new “level” for me, there are some things that I had to make on a different way  to make my code work, like use async and await. Also, I battled with the relative links to make my page work on GitHub Pages, and that is something I’ll never forget.
 ### Flowchart
 You can see the flowchart created on figma [here](https://www.figma.com/community/file/1139911273397210434).
+![pokedex-flowchart](./img/images/flowchart.png)
